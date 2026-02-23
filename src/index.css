@@ -4,6 +4,11 @@
 
 :root {
   color: #081f5c;
+  background: #d0e3ff;
+}
+
+body {
+  @apply bg-sky text-galaxy font-sans antialiased;
   background: #fff9f0;
 }
 
