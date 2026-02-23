@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #081f5c;
+  background: #fff9f0;
+}
+
+body {
+  @apply bg-milkyway text-galaxy font-sans antialiased;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
