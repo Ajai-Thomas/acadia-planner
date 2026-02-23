@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #081f5c;
+  background: #d0e3ff;
+}
+
+body {
+  @apply bg-sky text-galaxy font-sans antialiased;
+  margin: 0;
+  background-image: radial-gradient(circle at 10% 10%, rgba(255, 249, 240, 0.65), transparent 38%), radial-gradient(circle at 90% 0%, rgba(112, 150, 209, 0.32), transparent 30%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.glass-panel {
+  background: rgba(255, 249, 240, 0.7);
+  border: 1px solid rgba(112, 150, 209, 0.35);
+  backdrop-filter: blur(10px);
+}
