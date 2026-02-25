@@ -1,5 +1,12 @@
+import { motion } from 'framer-motion';
+
 const Card = ({ children, className = '' }) => (
-  <div className={`glass-panel rounded-3xl p-5 shadow-soft ${className}`}>{children}</div>
+  <motion.div
+    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+    className={`rounded-[2rem] p-8 shadow-xl transition-colors ${className}`}
+  >
+    {children}
+  </motion.div>
 );
 
 export default Card;
