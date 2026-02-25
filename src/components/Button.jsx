@@ -1,12 +1,12 @@
 const variants = {
-  primary: 'bg-planetary text-white hover:bg-galaxy',
-  secondary: 'bg-universe text-white hover:brightness-95',
-  ghost: 'bg-white/80 text-galaxy hover:bg-white',
+  primary: 'bg-neon text-black hover:brightness-110 shadow-[0_0_20px_rgba(204,255,0,0.2)]',
+  secondary: 'bg-white text-black hover:bg-gray-200',
+  ghost: 'bg-transparent border border-white/20 text-white hover:bg-white/10',
 };
 
 const Button = ({ children, className = '', variant = 'primary', ...props }) => (
   <button
-    className={`rounded-2xl px-4 py-2.5 text-sm font-semibold shadow-soft transition-all duration-200 hover:-translate-y-0.5 ${variants[variant]} ${className}`}
+    className={`rounded-full px-8 py-3 text-xs font-bold text-white uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 ${variants[variant]} ${className}`}
     {...props}
   >
     {children}

@@ -14,19 +14,36 @@ const DashboardPage = () => {
   return (
     <PageShell title="Dashboard Overview">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Card className="bg-white"><p className="text-sm text-galaxy/70">Today's Tasks</p><h2 className="mt-2 text-3xl font-bold">{todayTasks.length}</h2></Card>
-        <Card className="bg-white"><p className="text-sm text-galaxy/70">Upcoming Deadlines</p><h2 className="mt-2 text-3xl font-bold">{tasks.length}</h2></Card>
-        <Card className="bg-white"><p className="text-sm text-galaxy/70">Study Time</p><h2 className="mt-2 text-3xl font-bold">{tasks.reduce((a, b) => a + b.duration, 0)} min</h2></Card>
-        <Card className="bg-white"><p className="text-sm text-galaxy/70">Subjects</p><h2 className="mt-2 text-3xl font-bold">{subjects.length}</h2></Card>
+        <Card className="bg-white/5 border-white/10">
+          <p className="text-sm text-muted font-medium uppercase tracking-wider">Today's Tasks</p>
+          <h2 className="mt-2 text-4xl font-black text-white">{todayTasks.length}</h2>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <p className="text-sm text-muted font-medium uppercase tracking-wider">Upcoming Deadlines</p>
+          <h2 className="mt-2 text-4xl font-black text-white">{tasks.length}</h2>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <p className="text-sm text-muted font-medium uppercase tracking-wider">Study Time</p>
+          <h2 className="mt-2 text-4xl font-black text-white">{tasks.reduce((a, b) => a + b.duration, 0)} min</h2>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <p className="text-sm text-muted font-medium uppercase tracking-wider">Subjects</p>
+          <h2 className="mt-2 text-4xl font-black text-white">{subjects.length}</h2>
+        </Card>
       </div>
 
-      <Card className="mt-4 bg-white">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-semibold">Study Progress</h3>
-          <Link to="/tasks"><Button variant="secondary">Quick Add Task</Button></Link>
+      <Card className="mt-6 bg-white/5 border-white/10">
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <h3 className="text-xl font-bold uppercase tracking-tight text-white">Study Progress</h3>
+            <p className="text-sm text-muted">Overall completion across all tasks</p>
+          </div>
+          <Link to="/tasks">
+            <Button variant="primary">Quick Add Task</Button>
+          </Link>
         </div>
         <ProgressBar value={progress} />
-        <p className="mt-2 text-sm text-galaxy/70">{progress}% complete</p>
+        <p className="mt-4 text-sm text-neon font-bold tracking-widest uppercase">{progress}% complete</p>
       </Card>
     </PageShell>
   );

@@ -1,27 +1,33 @@
 import { motion } from 'framer-motion';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
 import { usePlanner } from '../context/PlannerContext';
 
 const PageShell = ({ title, children }) => {
   const { toast } = usePlanner();
 
-return (
-  <div className="min-h-screen">
-    <Navbar />
-    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 px-4 py-6 lg:grid-cols-[auto_1fr] lg:px-8">
-      <Sidebar />
-      <motion.main initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="pb-20 lg:pb-0">
-        <div className="mb-6 rounded-3xl bg-gradient-to-r from-galaxy to-planetary p-6 text-white shadow-soft">
-          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-venus">Acadia Workspace</p>
-          <h1 className="text-3xl font-bold">{title}</h1>
+  return (
+    <div className="min-h-screen bg-dark pt-32">
+      <Navbar />
+      <div className="mx-auto max-w-7xl px-6">
+        <header className="mb-12 border-b border-white/10 pb-8">
+          <p className="text-xs uppercase tracking-[0.3em] text-neon mb-2">Workspace</p>
+          <h1 className="text-5xl font-black uppercase tracking-tighter text-white">{title}</h1>
+        </header>
+        <motion.main 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          className="pb-20"
+        >
+          {children}
+        </motion.main>
+      </div>
+      {toast && (
+        <div className="fixed right-6 bottom-6 z-50 rounded-full bg-neon px-6 py-3 text-sm font-bold text-black shadow-2xl">
+          {toast}
         </div>
-        {children}
-      </motion.main>
-    </div>
-      {toast && <div className="fixed right-4 top-20 rounded-xl bg-planetary px-4 py-2 text-sm text-white shadow-soft">{toast}</div>}
+      )}
     </div>
   );
 };
 
-export default PageShell;
+export default PageShell; // Critical: Ensure this line exists

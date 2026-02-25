@@ -3,23 +3,40 @@
 @tailwind utilities;
 
 :root {
-  color: #081f5c;
-  background: #d0e3ff;
+  --bg-color: #050505;
+  --accent-neon: #ccff00;
+  --text-primary: #ffffff;
+  --text-muted: #a1a1a1; /* Light gray for visibility on dark backgrounds */
 }
 
 body {
-  @apply bg-sky text-galaxy font-sans antialiased;
   margin: 0;
-  background: #fff9f0;
-  background-image: radial-gradient(circle at 10% 10%, rgba(255, 249, 240, 0.65), transparent 38%), radial-gradient(circle at 90% 0%, rgba(112, 150, 209, 0.32), transparent 30%);
-}
-
-* {
-  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(204, 255, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(112, 150, 209, 0.05) 0%, transparent 50%);
 }
 
 .glass-panel {
-  background: rgba(255, 249, 240, 0.7);
-  border: 1px solid rgba(112, 150, 209, 0.35);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(204, 255, 0, 0.3);
+}
+
+/* Custom visibility classes */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-neon {
+  color: var(--accent-neon);
 }

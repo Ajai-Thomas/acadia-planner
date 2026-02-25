@@ -1,21 +1,19 @@
 import { Link } from 'react-router-dom';
 
 const Navbar = () => (
-  <header className="sticky top-0 z-40 border-b border-universe/25 bg-sky/80 backdrop-blur-xl">
-    <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-      <Link to="/" className="flex items-center gap-2 text-xl font-bold text-galaxy">
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-planetary text-sm text-white">A</span>
-        Acadia
+  <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-black/50 px-8 py-3 backdrop-blur-md">
+      <Link to="/" className="text-xl font-black tracking-tighter text-white">
+        ACADIA<span className="text-neon">.</span>
       </Link>
-      <nav className="hidden items-center gap-2 text-sm md:flex">
+      <nav className="hidden items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] md:flex">
         {[
           ['Dashboard', '/dashboard'],
           ['Subjects', '/subjects'],
           ['Tasks', '/tasks'],
-          ['Availability', '/availability'],
           ['Study Plan', '/plan'],
         ].map(([label, href]) => (
-          <Link key={href} to={href} className="rounded-xl px-3 py-2 font-medium text-galaxy/80 transition hover:bg-white/80 hover:text-galaxy">
+          <Link key={href} to={href} className="text-muted hover:text-neon transition-colors">
             {label}
           </Link>
         ))}

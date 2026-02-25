@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import Card from '../components/Card';
 import Navbar from '../components/Navbar';
 
 const features = [
@@ -10,57 +9,39 @@ const features = [
   { title: 'Weekly Scheduling', copy: 'Map availability into realistic learning blocks without overloading your week.', tag: 'Calm' },
 ];
 
-const metrics = [
-  ['Subjects', '12+'],
-  ['Weekly Slots', '35'],
-  ['Completion Lift', '42%'],
-];
-
 const LandingPage = () => (
-<div>
-  <Navbar />
-  <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-10 pt-12 md:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:pt-16">
-    <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} className="rounded-[2rem] bg-gradient-to-br from-galaxy via-planetary to-universe p-8 text-white shadow-soft md:p-12">
-      <p className="mb-4 inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.17em]">Acadia 2.0</p>
-      <h1 className="mb-4 text-4xl font-extrabold leading-tight md:text-6xl">Plan smarter.<br />Study better.</h1>
-      <p className="mb-7 max-w-2xl text-white/85">A calm command center for students who want a cleaner way to manage tasks, subjects, availability, and AI-ready study plans.</p>
-      <div className="flex flex-wrap gap-3">
-        <Link to="/dashboard"><Button className="bg-white text-galaxy hover:bg-meteor">Open Dashboard</Button></Link>
-        <Link to="/plan"><Button variant="ghost" className="border border-white/40 bg-white/10 text-white hover:bg-white/20">View Study Plan</Button></Link>
-      </div>
-    </motion.div>
+  <div className="pt-24 bg-dark min-h-screen text-white">
+    <Navbar />
+    <section className="mx-auto max-w-7xl px-6 py-20 text-center">
+      <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+        <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter md:text-[120px]">
+          Plan <span className="text-neon italic">Smarter</span><br />Study Better
+        </h1>
+        <p className="mx-auto mt-8 max-w-xl text-lg text-muted">
+          A minimalist command center for elite students. Focus on what matters, automate the rest.
+        </p>
+        <div className="mt-10 flex justify-center gap-4">
+          <Link to="/dashboard">
+            <button className="bg-neon text-white font-bold py-4 px-10 rounded-full transition-all hover:scale-105 shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+              Open Dashboard
+            </button>
+          </Link>
+        </div>
+      </motion.div>
+    </section>
 
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-panel rounded-[2rem] p-6 shadow-soft">
-      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.17em] text-planetary">Live Snapshot</p>
-      <div className="space-y-3">
-        {metrics.map(([label, value]) => (
-          <div key={label} className="flex items-center justify-between rounded-2xl bg-white/85 px-4 py-3">
-            <span className="text-sm text-galaxy/70">{label}</span>
-            <span className="text-xl font-bold text-galaxy">{value}</span>
-          </div>
-        ))}
-      </div>
-    </motion.div>
-  </section>
-
-  <section className="mx-auto max-w-7xl px-4 pb-24 md:px-8">
-    <div className="mb-5 flex items-end justify-between">
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.17em] text-planetary">Features</p>
-        <h2 className="text-2xl font-bold text-galaxy md:text-3xl">Everything needed for deep study work</h2>
-      </div>
-    </div>
-    <div className="grid gap-4 md:grid-cols-3">
+    <section className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-4 px-6 pb-32">
       {features.map((feature) => (
-        <Card key={feature.title} className="bg-meteor/80">
-          <p className="mb-3 inline-flex rounded-full bg-sky px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-planetary">{feature.tag}</p>
-          <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
-          <p className="text-sm text-galaxy/70">{feature.copy}</p>
-        </Card>
+        <div key={feature.title} className="glass-panel p-10 flex flex-col items-center text-center border-white/5 bg-white/5 backdrop-blur-lg rounded-[2rem]">
+          <div className="mb-6 h-12 w-12 rounded-full border border-neon flex items-center justify-center text-neon">
+            ★
+          </div>
+          <h3 className="text-2xl font-bold uppercase tracking-tight mb-4">{feature.title}</h3>
+          <p className="text-sm text-muted leading-relaxed">{feature.copy}</p>
+        </div>
       ))}
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 );
 
-export default LandingPage;
+export default LandingPage; // This line fixes the error in App.jsx
