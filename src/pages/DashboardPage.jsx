@@ -14,36 +14,37 @@ const DashboardPage = () => {
   return (
     <PageShell title="Dashboard Overview">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Card className="bg-white/5 border-white/10">
-          <p className="text-sm text-muted font-medium uppercase tracking-wider">Today's Tasks</p>
-          <h2 className="mt-2 text-4xl font-black text-white">{todayTasks.length}</h2>
+        {/* Changed to bg-white for visibility of black text */}
+        <Card className="bg-white border-none shadow-xl">
+          <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Today's Tasks</p>
+          <h2 className="mt-2 text-4xl font-black text-black">{todayTasks.length}</h2>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <p className="text-sm text-muted font-medium uppercase tracking-wider">Upcoming Deadlines</p>
-          <h2 className="mt-2 text-4xl font-black text-white">{tasks.length}</h2>
+        <Card className="bg-white border-none shadow-xl">
+          <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Upcoming Deadlines</p>
+          <h2 className="mt-2 text-4xl font-black text-black">{tasks.length}</h2>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <p className="text-sm text-muted font-medium uppercase tracking-wider">Study Time</p>
-          <h2 className="mt-2 text-4xl font-black text-white">{tasks.reduce((a, b) => a + b.duration, 0)} min</h2>
+        <Card className="bg-white border-none shadow-xl">
+          <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Study Time</p>
+          <h2 className="mt-2 text-4xl font-black text-black">{tasks.reduce((a, b) => a + b.duration, 0)} min</h2>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <p className="text-sm text-muted font-medium uppercase tracking-wider">Subjects</p>
-          <h2 className="mt-2 text-4xl font-black text-white">{subjects.length}</h2>
+        <Card className="bg-white border-none shadow-xl">
+          <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Subjects</p>
+          <h2 className="mt-2 text-4xl font-black text-black">{subjects.length}</h2>
         </Card>
       </div>
 
-      <Card className="mt-6 bg-white/5 border-white/10">
+      <Card className="mt-6 bg-white border-none shadow-xl">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h3 className="text-xl font-bold uppercase tracking-tight text-white">Study Progress</h3>
-            <p className="text-sm text-muted">Overall completion across all tasks</p>
+            <h3 className="text-xl font-bold uppercase tracking-tight text-black">Study Progress</h3>
+            <p className="text-sm text-gray-500">Overall completion across all tasks</p>
           </div>
           <Link to="/tasks">
             <Button variant="primary">Quick Add Task</Button>
           </Link>
         </div>
         <ProgressBar value={progress} />
-        <p className="mt-4 text-sm text-neon font-bold tracking-widest uppercase">{progress}% complete</p>
+        <p className="mt-4 text-sm text-black font-black tracking-widest uppercase">{progress}% complete</p>
       </Card>
     </PageShell>
   );

@@ -1,40 +1,64 @@
 import { useState } from 'react';
 import Button from '../components/Button';
-import Modal from '../components/Modal';
+import Card from '../components/Card';
 import PageShell from '../components/PageShell';
 import SubjectCard from '../components/SubjectCard';
 import { usePlanner } from '../context/PlannerContext';
 
 const SubjectsPage = () => {
-  const { subjects, addSubject } = usePlanner();
-  const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({ name: '', difficulty: 'Medium', examDate: '' });
+  const { subjects, addSubject, removeSubject } = usePlanner();
+  const [newSubject, setNewSubject] = useState('');
 
-  const submit = (e) => {
+  const handleAddSubject = (e) => {
     e.preventDefault();
-    addSubject(form);
-    setOpen(false);
-    setForm({ name: '', difficulty: 'Medium', examDate: '' });
+    if (newSubject.trim()) {
+      addSubject({
+        id: Date.now().toString(),
+        name: newSubject.trim(),
+        color: '#ccff00', // Neon accent color
+      });
+      setNewSubject('');
+    }
   };
 
   return (
-    <PageShell title="Subjects Management">
-      <div className="mb-4 flex justify-end">
-        <Button onClick={() => setOpen(true)}>Add Subject</Button>
-      </div>
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {subjects.map((subject) => <SubjectCard key={subject.id} subject={subject} />)}
-      </div>
-      <Modal open={open} onClose={() => setOpen(false)} title="Add subject">
-        <form onSubmit={submit} className="space-y-3">
-          <input required placeholder="Subject name" className="w-full rounded-lg border border-sky px-3 py-2" value={form.name} onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))} />
-          <select className="w-full rounded-lg border border-sky px-3 py-2" value={form.difficulty} onChange={(e) => setForm((p) => ({ ...p, difficulty: e.target.value }))}>
-            <option>Low</option><option>Medium</option><option>High</option>
-          </select>
-          <input type="date" className="w-full rounded-lg border border-sky px-3 py-2" value={form.examDate} onChange={(e) => setForm((p) => ({ ...p, examDate: e.target.value }))} />
-          <Button className="w-full" type="submit">Save</Button>
+    <PageShell title="Manage Subjects">
+      {/* Subject Input Form Container */}
+      <Card className="mb-8 bg-white border-none shadow-2xl">
+        <form onSubmit={handleAddSubject} className="grid gap-4 md:grid-cols-[1fr_auto]">
+          <input
+            type="text"
+            placeholder="New Subject Name (e.g. Mathematics)"
+            className="rounded-full bg-gray-100 px-6 py-4 text-black placeholder:text-gray-500 outline-none border-2 border-transparent focus:border-neon transition-all"
+            value={newSubject}
+            onChange={(e) => setNewSubject(e.target.value)}
+          />
+          <Button type="submit" variant="primary">
+            <span className="text-black">Add Subject</span>
+          </Button>
         </form>
-      </Modal>
+      </Card>
+
+      {/* Subjects Display Grid */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {subjects.length > 0 ? (
+          subjects.map((subject) => (
+            <div key={subject.id} className="relative group">
+              <SubjectCard subject={subject} />
+              <button
+                onClick={() => removeSubject(subject.id)}
+                className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-red-500 text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-lg flex items-center justify-center font-bold"
+              >
+                ×
+              </button>
+            </div>
+          ))
+        ) : (
+          <div className="col-span-full py-20 text-center">
+            <p className="text-muted text-lg uppercase tracking-widest font-black">No subjects added yet</p>
+          </div>
+        )}
+      </div>
     </PageShell>
   );
 };

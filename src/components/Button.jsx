@@ -6,7 +6,7 @@ const variants = {
 
 const Button = ({ children, className = '', variant = 'primary', ...props }) => (
   <button
-    className={`rounded-full px-8 py-3 text-xs font-bold text-white uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 ${variants[variant]} ${className}`}
+    className={`rounded-full px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 ${variants[variant]} ${className}`}
     {...props}
   >
     {children}

@@ -6,7 +6,7 @@ const PageShell = ({ title, children }) => {
   const { toast } = usePlanner();
 
   return (
-    <div className="min-h-screen bg-dark pt-32">
+    <div className="min-h-screen bg-dark pt-32 text-black">
       <Navbar />
       <div className="mx-auto max-w-7xl px-6">
         <header className="mb-12 border-b border-white/10 pb-8">
@@ -30,4 +30,4 @@ const PageShell = ({ title, children }) => {
   );
 };
 
-export default PageShell; // Critical: Ensure this line exists
+export default PageShell;

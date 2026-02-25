@@ -22,7 +22,7 @@ const LandingPage = () => (
         </p>
         <div className="mt-10 flex justify-center gap-4">
           <Link to="/dashboard">
-            <button className="bg-neon text-white font-bold py-4 px-10 rounded-full transition-all hover:scale-105 shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+            <button className="bg-neon text-black font-bold py-4 px-10 rounded-full transition-all hover:scale-105 shadow-[0_0_20px_rgba(204,255,0,0.3)]">
               Open Dashboard
             </button>
           </Link>
